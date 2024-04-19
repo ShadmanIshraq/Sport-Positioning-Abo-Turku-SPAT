@@ -1,17 +1,43 @@
 # Sport-Positioning-Åbo-Turku-SPÅT (Description of the Process)
 The provided code performs a series of data processing and manipulation tasks using the pandas library in Python. It starts by importing the necessary libraries and then reads two CSV files containing session statistics and position data which are two separate dataframes. These dataframes are subsequently merged based on the 'timestamp' column, resulting in a new dataframe called merged_data.
+
+
 The merged data is sorted based on the 'player_id' and 'timestamp' columns, and specific columns, such as 'speed' and 'distance,' are removed from the dataset. Unit conversion is applied to two columns ('speed_soft' and 'top_speed'), converting them from meters per second to kilometers per hour.
+
+
 The code adds two new columns to the dataset: 'player_weight' with a constant value of 38 (because of the unavailability of player weight this constant value 38 is considered) and 'power_output' calculated as the product of 'player_weight,' 'speed_soft,' and a constant factor (1.04). The values in these columns are rounded to three decimal places.
+
+
 The modified dataset is then saved to an Excel file. In the next part of the code, it reads the previously saved Excel.
+
+
 In the process of Data Aggregation, the code intelligently organizes the session data by grouping the merged_data dataframe based on the 'player_id.' This grouping serves as the foundation for deriving insightful statistics that provide a comprehensive overview of each player's performance during the session.
+
+
 The aggregation involves computing key metrics for each player, such as:
+
+
 Total Time (total_time): This metric is determined by extracting the 'last' timestamp value from the 'twr_timestamp' column for each player. It signifies the overall duration each player spent in the session.
+
+
 Top Speed (top_speed): Calculated as the maximum value in the 'top_speed' column for each player, this metric captures the highest speed achieved by individual players during the session.
+
+
 Acceleration Numbers (acceleration_numbers): Representing the number of accelerations for each player, this metric is computed by extracting the 'last' value from the 'acceleration' column.
+
+
 Deceleration Numbers (deceleration_numbers): Similar to acceleration, this metric denotes the number of decelerations for each player and is derived by considering the 'last' value from the 'deceleration' column.
+
+
 Speed Exceeded 20 (speed_exceeded_20): Calculated by summing instances where the 'speed_soft' column exceeds 20, this metric quantifies the count of occurrences where players surpassed a speed threshold of 20.
+
+
 Total Distance (total_distance): This metric is obtained by extracting the 'last' value from the 'distance_soft' column, signifying the cumulative distance covered by each player.
+
+
 Powerplay Count (powerplay_count): Indicating instances where power output exceeds 500, this metric is computed by summing occurrences where the 'power_output' column surpasses the specified threshold.
+
+
 Subsequently, in Excel Output, the aggregated data is systematically stored in a new Excel file, the path of which is specified by the variable output_file_path. Notably, the index information is included in the Excel file, providing a structured and comprehensive representation of the aggregated session statistics for further analysis or reporting.
 # Workflow of the code
 Import Libraries: The code begins by importing the necessary library, pandas, and assigning it the alias 'pd.'
