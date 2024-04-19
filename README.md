@@ -74,11 +74,23 @@ Data Aggregation: Groups the merged_data dataframe by 'player_id' and aggregates
 
 
 'total_time'=('twr_timestamp', 'last'): It calculates the 'last' value of the 'twr_timestamp' column for each player, representing the total time for each player.
+
+
 'top_speed'=('top_speed', 'max'): It calculates the maximum value of the 'top_speed' column for each player, representing the top speed achieved by each player.
+
+
 'acceleration_numbers'=('acceleration', 'last'): It calculates the 'last' value of the 'acceleration' column for each player, representing the number of accelerations for each player.
+
+
 'deceleration_numbers'=('deceleration', 'last'): It calculates the 'last' value of the 'deceleration' column for each player, representing the number of decelerations for each player.
+
+
 'speed_exceeded_20'=('speed_soft', lambda x: (x > 20).sum()): It calculates the sum of occurrences where the 'speed_soft' column is greater than 20 for each player, representing the count of instances where the speed exceeded 20 for each player.
+
+
 'total_distance'=('distance_soft', 'last'): It calculates the 'last' value of the 'distance_soft' column for each player, representing the total distance covered by each player.
+
+
 'powerplay_count'=('power_output', lambda x: (x > 500).sum()): It calculates the sum of occurrences where the 'power_output' column is greater than 500 for each player, representing the count of instances where the power output exceeded 500 for each player.
 
 
